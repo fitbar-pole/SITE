@@ -1,0 +1,41 @@
+- var images = ["http://studiopassionpolefitness.com/wp-content/themes/passionpolefitness/img/logotop.png","http://37.60.244.243/~studiosc/wp-content/uploads/2017/02/Studio_Scorpio_-_PNG.png","https://studio-vertical.com/wp-content/uploads/2018/12/Studio-vertical-logo-2018-affiche-300.png","https://static.wixstatic.com/media/b006fa_be3b6183d0384199ad9c69940bd51f23~mv2_d_1718_1241_s_2.png/v1/fill/w_239,h_172,al_c,q_80,usm_0.66_1.00_0.01/b006fa_be3b6183d0384199ad9c69940bd51f23~mv2_d_1718_1241_s_2.webp","https://static1.squarespace.com/static/594b2f16bf629aa6e6edfed5/t/5959316a29687faf878e0d66/1571693046379/?format=1500w","https://scontent.fyxk1-1.fna.fbcdn.net/v/t1.0-9/56209441_2090136604618048_328751120551772160_n.jpg?_nc_cat=103&_nc_eui2=AeEpttuRjmNZgdcuukuwWUeXamvS9h29Uoek9UIAEltEM4k_y0Ib8Cu_ShzeiolerxDj-aQmOwqS8DLwULN_ZFpd_3Z_tkBV9KLl-bvCT8J5kQ&_nc_oc=AQmGvi57MJ2GzmlceL2_zylvs-AZjWLvkhNuY6lhWsjg-zubARxxGzZlBp-4JH7UH28&_nc_ht=scontent.fyxk1-1.fna&oh=cbbc22c872248f2783d2aa034bb04c82&oe=5E61B220"];
+
+- var text = {Passion: 'Studio passion pole fitness', Scorpio: 'Studio scorpio pole fitness', Vertical: 'Pole Dance studio Vertical', Studio: 'Pole Fitness Val-D or', Vexial: 'Studio Vexial Pole Fitness', Nomade: 'Nomade Pole Dance'};
+
+#slider.slider(style="--img-prev:url(" + images[0] + ");")  
+  #slider-content.slider__content
+    .slider__images
+      each val, i in images
+        - var imgClassName = 'slider__images-item';
+        if i+1 === 1
+          - imgClassName += ' slider__images-item--active';
+        div(class=imgClassName data-id=i+1)
+          img(src=val)
+        
+    .slider__text
+      - var i = 0;
+      each val, key in text
+        
+        - var textClassName = 'slider__text-item';
+        if ++i === 1
+          - textClassName += ' slider__text-item--active';
+        div(class=textClassName data-id=i)
+          .slider__text-item-head
+            h3= key
+          .slider__text-item-info
+            p= val
+        
+  .slider__nav
+    .slider__nav-arrows
+      #left.slider__nav-arrow.slider__nav-arrow--left to left
+      #right.slider__nav-arrow.slider__nav-arrow--right to right
+    #slider-dots.slider__nav-dots
+      
+      - var i = 0;
+      while i++ < images.length
+        - var dotsClassName = 'slider__nav-dot';
+        if i === 1
+          - dotsClassName += ' slider__nav-dot--active';
+      
+        div(class=dotsClassName data-id=i)
+    
